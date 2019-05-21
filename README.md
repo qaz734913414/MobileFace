@@ -1,18 +1,98 @@
+![MobileFaceV1](./example/result_allinone_v1.jpg "MobileFace_V1_Result") 
 # MobileFace
 A face recognition solution on mobile device.
 
+## Prerequirements
+- Anaconda (optional but recommend)
+- MXNet and GluonCV ([the easiest way to install](https://gluon-cv.mxnet.io/index.html#installation "Install MXNet and GluonCV"))
+- DLib (may be deprecated in the future)  
+The easiest way to install DLib is through pip.
+```shell
+pip install dlib
+```
+
 ## Performance
+### Identification
 | Model | Framework | Size | CPU | LFW | Target |
 | :---: |  :---: | :---: | :---: | :---: | :---: |
 | MobileFace_Identification_V1 | MXNet | 3.40M | 8.5ms | - | Actual Scene |
 | MobileFace_Identification_V2 | MXNet | 3.41M | 9ms | 99.653% | Benchmark |
 | :star2:MobileFace_Identification_V3 | MXNet | 2.10M | :boom:3ms(sota) | 95.466%(baseline) | Benchmark |
+
+### Detection
+| Model | Framework | Size | CPU |
+| :---: |  :---: | :---: | :---: |
+| MobileFace_Detection_V1 | MXNet/GluonCV | 30M | 20ms/50fps |
+
+### Landmark
+| Model | Framework | Size | CPU |
+| :---: |  :---: | :---: | :---: |
+| MobileFace_Landmark_V1 | DLib | 5.7M | <1ms |
+
+### Pose
+| Model | Framework | Size | CPU |
+| :---: |  :---: | :---: | :---: |
+| MobileFace_Pose_V1 | free | <1K | <0.1ms |
+
+### Align
+| Model | Framework | Size | CPU |
+| :---: |  :---: | :---: | :---: |
+| MobileFace_Align_V1 | free | <1K | <0.1ms |
+
+### Attribute
+| Model | Framework | Size | CPU |
+| :---: |  :---: | :---: | :---: |
+| MobileFace_Attribute_V1 | MXNet/GluonCV | 16.4M | 14ms/71fps |
+
 ## Example
 To get fast face feature embedding with MXNet as follow:
 ```shell
 cd example
-python get_face_feature_mxnet.py
+python get_face_feature_v1_mxnet.py # v1, v2, v3
 ```
+To get fast face detection result with MXNet/GluonCV as follow:
+```shell
+cd example
+python get_face_boxes_gluoncv.py
+```
+To get fast face landmarks result with dlib as follow:
+```shell
+cd example
+python get_face_landmark_dlib.py
+```
+To get fast face pose result as follow:
+```shell
+cd example
+python get_face_pose.py
+```
+To get fast face align result as follow:
+```shell
+cd example
+python get_face_align.py
+```
+To get fast face attribute results as follow:
+```shell
+cd example
+python get_face_attribute_gluoncv.py
+```
+To get mobileface all results as follow:
+```shell
+cd example
+python mobileface_allinone.py
+```
+To get mobileface makeup result as follow:
+```shell
+cd example
+python get_face_makeup_v1.py
+```
+![MobileFaceMakeupV1](./example/makeup_result/girl_comparison.jpg "MobileFaceMakeup_V1_Result") 
+
+To get mobileface enhancement result as follow:
+```shell
+cd example
+python get_face_enhancement_v1.py
+```
+![MobileFaceEnhanceV1](./example/light_result/light_comparison.png "MobileFaceEnhance_V1_Result") 
 
 ## Visualization
 ### t-SNE
@@ -50,7 +130,7 @@ python model_prune_mxnet.py
 
 ## Benchmark
 ### LFW
-The LFW test dataset (aligned by [MTCNN](https://kpzhang93.github.io/MTCNN_face_detection_alignment/index.html) and cropped to 112x112) can be download from [GoogleDrive](https://drive.google.com/file/d/1XRdCt3xOw7B3saw0xUSzLRub_HI4Jbk3/view) or [BaiduDrive](https://pan.baidu.com/s/1nxmSCch), and then put it (named lfw.bin) in the directory of ```data/LFW-bin```.  
+The LFW test dataset (aligned by [MTCNN](https://kpzhang93.github.io/MTCNN_face_detection_alignment/index.html) and cropped to 112x112) can be download from [Dropbox](https://www.dropbox.com/s/wpx6tqjf0y5mf6r/faces_ms1m-refine-v2_112x112.zip?dl=0) or [BaiduDrive](https://pan.baidu.com/s/1S6LJZGdqcZRle1vlcMzHOQ), and then put it (named lfw.bin) in the directory of ```data/LFW-bin```.  
 To get the LFW comparison result and plot the ROC curves as follow:
 ```shell
 cd benchmark/LFW
@@ -61,11 +141,14 @@ python lfw_comparison_and_plot_roc.py
 
 ## TODO
 - [x] MobileFace_Identification
-- [ ] MobileFace_Detection
-- [ ] MobileFace_Landmark
-- [ ] MobileFace_Align
-- [ ] MobileFace_Attribute
-- [ ] MobileFace_Pose
+- [x] MobileFace_Detection
+- [x] MobileFace_Landmark
+- [x] MobileFace_Align
+- [x] MobileFace_Attribute
+- [x] MobileFace_Pose
+- [x] MobileFace_Makeup
+- [x] MobileFace_Enhancement
+- [ ] MobileFace_Swap
 - [ ] MobileFace_NCNN
 - [ ] MobileFace_FeatherCNN
 - [x] Benchmark_LFW
@@ -77,4 +160,3 @@ Coming Soon!
 ## Reference
 - [**t-SNE**](http://lvdmaaten.github.io/tsne/ "t-SNE")
 - [**InsightFace**](https://github.com/deepinsight/insightface "InsightFace")
-
