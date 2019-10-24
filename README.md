@@ -1,6 +1,22 @@
+# <p align="center">:boom:**Big Bang**:boom:</p>
+
+#### <p align="center">**Receptive Field Is Natural Anchor**</p>
+#### <p align="center">**Receptive Field Is All You Need**</p>
+<p align="center">2K real-time detection is so easy!</p>
+
+<div align="center"><img width="1280" height="auto" src="./example/LFFD/lffd_v2_gpu_result.gif"/></div>  
+
+#### <p align="center">[[Paper]](https://arxiv.org/abs/1904.10633) [[MXNet]](https://github.com/YonghaoHe/A-Light-and-Fast-Face-Detector-for-Edge-Devices) [[PyTorch]](https://github.com/becauseofAI/lffd-pytorch)</p>
+
+---
+
+# <p align="center">**MobileFace**</p>
+
+<p align="center">A face recognition solution on mobile device.</p>
+
 ![MobileFaceV1](./example/result_allinone_v1.jpg "MobileFace_V1_Result") 
-# MobileFace
-A face recognition solution on mobile device.
+
+<div align="center"><img width="1280" height="auto" src="./example/tracking_result/result_friends2_tracking.gif"/></div>
 
 ## Prerequirements
 - Anaconda (optional but recommend)
@@ -44,42 +60,61 @@ pip install dlib
 | :---: |  :---: | :---: | :---: |
 | MobileFace_Attribute_V1 | MXNet/GluonCV | 16.4M | 14ms/71fps |
 
+### Tracking
+| Model | Framework | Size | CPU |
+| :---: |  :---: | :---: | :---: |
+| MobileFace_Tracking_V1 | free | - | <2ms |
+
 ## Example
 To get fast face feature embedding with MXNet as follow:
 ```shell
 cd example
 python get_face_feature_v1_mxnet.py # v1, v2, v3
 ```
+
 To get fast face detection result with MXNet/GluonCV as follow:
 ```shell
 cd example
 python get_face_boxes_gluoncv.py
 ```
+
 To get fast face landmarks result with dlib as follow:
 ```shell
 cd example
 python get_face_landmark_dlib.py
 ```
+
 To get fast face pose result as follow:
 ```shell
 cd example
 python get_face_pose.py
 ```
+
 To get fast face align result as follow:
 ```shell
 cd example
 python get_face_align.py
 ```
+
 To get fast face attribute results as follow:
 ```shell
 cd example
 python get_face_attribute_gluoncv.py
 ```
+
 To get mobileface all results as follow:
 ```shell
 cd example
 python mobileface_allinone.py
 ```
+
+To get mobileface fast tracking result as follow:
+```shell
+cd example
+python get_face_tracking_v1.py
+```
+<div align="center"><img width="1280" height="auto" src="./example/tracking_result/result_friends1_tracking.gif"/></div>  
+
 To get mobileface makeup result as follow:
 ```shell
 cd example
@@ -146,9 +181,12 @@ python lfw_comparison_and_plot_roc.py
 - [x] MobileFace_Align
 - [x] MobileFace_Attribute
 - [x] MobileFace_Pose
+- [x] MobileFace_Tracking
 - [x] MobileFace_Makeup
 - [x] MobileFace_Enhancement
-- [ ] MobileFace_Swap
+- [ ] MobileFace_FacePortrait
+- [ ] MobileFace_FaceSwap
+- [ ] MobileFace_MakeupSwap
 - [ ] MobileFace_NCNN
 - [ ] MobileFace_FeatherCNN
 - [x] Benchmark_LFW
@@ -156,7 +194,16 @@ python lfw_comparison_and_plot_roc.py
 
 ## Others
 Coming Soon!
+#### FacePortrait
+<div align="center"><img width="1280" height="auto" src="./MobileFace_ComingSoon/imgs/portrait_all.png"/></div>
+
+#### MakeupSwap
+<div align="center"><img width="1280" height="auto" src="./MobileFace_ComingSoon/imgs/BeautyGAN.jpg"/></div>
+
+#### FaceSwap
+<div align="center"><img width="1280" height="auto" src="./MobileFace_ComingSoon/imgs/funit.gif"/></div>
 
 ## Reference
 - [**t-SNE**](http://lvdmaaten.github.io/tsne/ "t-SNE")
 - [**InsightFace**](https://github.com/deepinsight/insightface "InsightFace")
+- [**SORT**](https://github.com/abewley/sort "sort")
